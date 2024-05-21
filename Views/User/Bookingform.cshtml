@@ -1,0 +1,104 @@
+﻿@{
+    ViewData["Title"] = "Bookingform Page";
+}
+@model Bookingform
+
+<style>
+    body {
+        background-color: #f0f0f0;
+    }
+
+    .booking-form {
+        background-color: #0a0a23;
+        color: aliceblue;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        max-width: 700px;
+        margin: 50px auto;
+    }
+
+        .booking-form h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        }
+
+    .form-group {
+        margin-bottom: 20px;
+    }
+
+        .form-group label {
+            font-weight: bold;
+        }
+
+    .btn-book {
+        width: 100%;
+    }
+</style>
+<body>
+    <div class="container mt-5 pt-5">
+        <div class="booking-form">
+            <h2>Booking Car</h2>
+            <form method="post" action="/Home/Bookingform">
+                <div class="form-group">
+                    <label asp-for="PersonName">Booking Person's Name</label>
+                    <input asp-for="PersonName" type="text" class="form-control" id="bookingPerson" name="PersonName" placeholder="Enter booking person's name" required>
+                </div>
+                <div class="form-group">
+                    <label asp-for="CarName">Booking Car Name</label>
+                    <input asp-for="CarName" type="text" class="form-control" id="bookingPerson" name="Carname" placeholder="Enter booking Car Name" required>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Cnic">CNIC Number</label>
+                    <input asp-for="Cnic" type="text" class="form-control" id="bookingPerson" name="cnicNumber" placeholder="Enter CNIC number" required>
+                </div>
+                <div class="form-group">
+                    <label asp-for="PhoneNumber">Phone Number</label>
+                    <input asp-for="PhoneNumber" type="tel" class="form-control" id="bookingPerson" name="phoneNumber" placeholder="Enter phone number" required>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Email">Email</label>
+                    <input asp-for="Email" type="email" class="form-control" id="bookingPerson" name="email" placeholder="Enter email" required>
+                </div>
+                <div class="form-group">
+                    <label asp-for="CarPlateNumber">Car Plate Number</label>
+                    <input asp-for="CarPlateNumber" type="text" class="form-control" id="bookingPerson" name="carPlate" placeholder="Enter car plate number" required>
+                </div>
+                <div class="form-group">
+                    <label asp-for="CarColor">Car Color</label>
+                    <input asp-for="CarColor" type="text" class="form-control" id="bookingPerson" name="carColor" placeholder="Enter car color" required>
+                </div>
+                <div class="form-group">
+                    <label asp-for="PickupLocation">Pickup Location</label>
+                    <input asp-for="PickupLocation" type="text" class="form-control" id="bookingPerson" name="pickupLocation" placeholder="Enter pickup location" required>
+                </div>
+                <div class="form-group">
+                    <label asp-for="PickUpDate">Pickup Date</label>
+                    <input asp-for="PickUpDate" type="date" class="form-control" id="bookingPerson" name="pickupDate" required>
+                </div>
+                <div class="form-group">
+                    <label asp-for="ReturnDate">Return Date</label>
+                    <input asp-for="ReturnDate" type="date" class="form-control" id="bookingPerson" name="returnDate" required>
+                </div>
+                <div class="form-group">
+                    <label asp-for="CarType">Car Type</label>
+                    <select class="form-control" id="bookingPerson" name="carType" required>
+                        <option value="">Select car type</option>
+                        <option value="Economy">Economy</option>
+                        <option value="Compact">Compact</option>
+                        <option value="Midsize">Midsize</option>
+                        <option value="Full Size">Full Size</option>
+                        <option value="Luxury">Luxury</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label asp-for="SomeInformation">Additional Information</label>
+                    <textarea class="form-control" id="additionalInfo" rows="3" name="someInformation" placeholder="Enter any additional information"></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary btn-book">Book Now</button>
+            </form>
+        </div>
+    </div>
+    <script src="/_framework/aspnetcore-browser-refresh.js"></script>
+</body>

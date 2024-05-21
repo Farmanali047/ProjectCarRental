@@ -1,0 +1,76 @@
+﻿@model List<CarRegisteration>
+@{
+    Layout = null;
+}
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<html>
+<head>
+
+
+    <style>
+        table thead th {
+            border: 1px solid white;
+        }
+
+        table tbody td {
+            border: 1px solid black;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container h1 display-5 text-center px-2  shadow mt-5 bg-info">
+        <div class="row">
+            <div class="col">
+                <h2 class="text-center "> list of total cars</h2>
+            </div>
+        </div>
+    </div>
+    <div class="container my-5">
+        <table class="table table-striped table-hover ">
+            <thead class=" table-dark">
+
+            <th>
+                Id
+            </th>
+            <th>
+                CarName
+            </th>
+            <th>
+                CarColor
+            </th>
+            <th>
+                CarModel
+            </th>
+            <th>
+                Registeration Number
+            </th>
+            <th>
+                Rental
+            </th>
+            
+            
+            </thead>
+            <tbody class=" border border-dark">
+                @foreach (var car in Model)
+                {
+                    <tr>
+                        <td>@car.Id</td>
+                        <td>@car.CarName</td>
+                        <td>@car.CarColor</td>
+                        <td>@car.CarModel</td>
+                        <td>@car.RegisterationNumber</td>
+                        <td>@car.Rental</td>
+        @*                <td>@car.ImagePath</td> *@
+                        
+                        
+                    </tr>
+                }
+            </tbody>
+
+        </table>
+    </div>
+</body>
+</html>

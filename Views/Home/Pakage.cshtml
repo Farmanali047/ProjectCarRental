@@ -1,0 +1,67 @@
+﻿@{
+    ViewData["Title"] = "Pakage Page";
+}
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f8f9fa;
+    }
+
+    
+
+    .container {
+        margin-top: 50px;
+    }
+
+    .package-card {
+        background-color: #ffffff;
+        border-radius: 10px;
+        padding: 20px;
+        margin-bottom: 20px;
+    }
+
+    .package-title {
+        font-weight: bold;
+        color: #007bff;
+        margin-bottom: 10px;
+    }
+
+    .package-description {
+        margin-top: 10px;
+    }
+
+    .package-price {
+        font-size: 20px;
+        color: #28a745;
+        font-weight: bold;
+        margin-top: 10px;
+    }
+</style>
+<div class="container">
+    <div class="row">
+        <div class="col-md-4 mt-4 pt-4">
+            <div class="package-card">
+                <h2 class="package-title">Weekend Getaway</h2>
+                <p class="package-description">Escape for the weekend with our special package.</p>
+                <p class="package-price">$200</p>
+                <a href="@Url.Action("Bookingform", "Home")" class="btn btn-primary">Book Now </a>
+            </div>
+        </div>
+        <div class="col-md-4 mt-4 pt-4">
+            <div class="package-card">
+                <h2 class="package-title">Family Vacation</h2>
+                <p class="package-description">Plan a memorable family vacation with our family-friendly package.</p>
+                <p class="package-price">$300</p>
+                <a href="@Url.Action("Bookingform", "Home")" class="btn btn-primary">Book Now </a>
+            </div>
+        </div>
+        <div class="col-md-4 mt-4 pt-4">
+            <div class="package-card">
+                <h2 class="package-title">Road Trip Adventure</h2>
+                <p class="package-description">Embark on an epic road trip adventure with our all-inclusive package.</p>
+                <p class="package-price">$350</p>
+                <a href="@Url.Action("Bookingform", "Home")" class="btn btn-primary">Book Now </a>
+            </div>
+        </div>
+    </div>
+</div>

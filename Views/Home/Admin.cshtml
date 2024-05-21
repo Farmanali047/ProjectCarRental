@@ -1,0 +1,69 @@
+﻿@{
+    Layout = null;
+}
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<nav class="navbar navbar-expand-lg navbar-light bg-dark ">
+    <a class="navbar-brand text-light" href="@Url.Action("Admin", "Admin")">Car Rental System</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+
+                <a class="nav-link text-light" href="@Url.Action("Admin", "Admin")">Home</a>
+            </li>
+            <li class="nav-item">
+
+                <a class="nav-link text-light" href="@Url.Action("CarRegisteration", "Admin")">Car Registration</a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link text-light" href="@Url.Action("Removed", "Admin")">Removed Car</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-light" href="@Url.Action("Booked", "Admin")">Booking  Car's</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-light" href="@Url.Action("Available", "Admin")">Available Car's</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-md-8">
+            <h2>Welcome to Car Rental System</h2>
+            <p>This is a platform where you can rent various types of cars for your needs. Whether you need a car for a family vacation, business trip, or any other purpose, we've got you covered.</p>
+            <p>Our fleet includes a wide range of vehicles, from economy cars to luxury sedans and SUVs.</p>
+            <p>With our easy booking process and competitive rates, renting a car has never been easier!</p>
+        </div>
+
+    </div>
+</div>
+
+<footer class="bg-dark text-light mt-5 py-4">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <h5>Our Services</h5>
+                <ul>
+                    <li>Car Rental</li>
+                    <li>Long-Term Leasing</li>
+                    <li>Airport Transfers</li>
+                    <li>24/7 Customer Support</li>
+                </ul>
+            </div>
+            <div class="col-md-4">
+                <h5>Contact Us</h5>
+                <p>Email: farmanali35450@gmail.com</p>
+                <p>Phone: +92 320-8180910</p>
+            </div>
+            <div class="col-md-4">
+                <h5>About Us</h5>
+                <p>We aim to provide convenient and reliable car rental services to our customers. With a wide selection of vehicles and flexible rental options, we strive to make your travel experience hassle-free.</p>
+            </div>
+        </div>
+    </div>
+</footer>

@@ -1,0 +1,72 @@
+﻿@{
+    Layout = null;
+}
+@model CarRegisteration
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+<style>
+
+    .signup-container {
+        border-radius: 10px;
+        background-color: #ffffff;
+        padding: 20px;
+        margin-top: 40px;
+    }
+
+    body {
+        background-color: whitesmoke;
+    }
+    button{
+        margin: -29px;
+       
+
+    }
+</style>
+
+        
+            <section class="container col-lg-6 col-md-10 col-sm-12 signup-container">
+                <h1 class="text-center">Car Registration</h1>
+                <p class="text-center">Please fill out this form with the required information</p>
+                <hr>
+                <form method="post" action="/Admin/CarRegisteration" enctype="multipart/form-data">
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            <label asp-for="CarName">Car Name</label>
+                            <input asp-for="CarName" type="text" class="form-control" id="CarName" name="CarName" placeholder="Enter Car Name" required>
+                        </div>
+                        <div class="col-md-6">
+                            <label asp-for="CarColor">Car Color</label>
+                            <input asp-for="CarColor" type="text" class="form-control" id="CarColor" name="CarColor" placeholder="Enter Car Color" required>
+                        </div>
+                        <div class="col-md-6">
+                            <label asp-for="CarModel">Car Model</label>
+                            <input asp-for="CarModel" type="text" class="form-control" id="CarModel" name="CarModel" placeholder="Enter Car Model" required>
+                        </div>
+                        <div class="col-md-6">
+                            <label asp-for="RegisterationNumber">Registeration Number</label>
+                            <input asp-for="RegisterationNumber" type="text" class="form-control" name="RegisterationNumber" id="Registeration Number" placeholder="Enter Car Registeration Number" required>
+                        </div>
+                        <div class="col-md-6">
+                            <label asp-for="Rental">Rental</label>
+                            <input asp-for="Rental" type="text" class="form-control" name="Rental" id="Registeration Number" placeholder="Enter the Rental" required>
+                        </div>
+                        <div class="mb-3">
+                            <label asp-for="CarImage"> Car Image (Upload)</label>
+                            <input asp-for="CarImage" class="form-control" name="CarImage" id="custom-file" type="file" required>
+                        </div>
+                    </div>
+                    <div class="row justify-content-end">
+                        <div class="col-md-6">
+                            <button type="submit" class="btn btn-primary btn-register mt-3 " style="padding-left: -30px; padding-right: -30px;">Register</button>
+                        </div>
+                    </div>
+                </form>
+            </section>
+        
+<div class="d-flex justify-content-center">
+    @Html.ActionLink(" Back to Home", "Admin", "Admin", null, new { @class = "btn mb-5 px-5 py-3 mt-2 bg-info rounded-3 text-white fa fa-arrow-left me-2" })
+</div>
+
+
+

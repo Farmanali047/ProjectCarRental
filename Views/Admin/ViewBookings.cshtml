@@ -1,0 +1,99 @@
+﻿@model List<Bookingform>
+@{
+    Layout = null;
+}
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<html>
+<head>
+    <div class="container h1 display-5 text-center px-2  shadow mt-5 bg-info">
+        <div class="row">
+            <div class="col">
+                <h2 class="text-center "> List of Booking Cars</h2>
+            </div>
+        </div>
+    </div>
+
+    <style>
+        table thead th {
+            border: 1px solid white;
+        }
+
+        table tbody td {
+            border: 1px solid black;
+        }
+    </style>
+</head>
+
+<body>
+
+
+    <div class="container my-5">
+        <table class="table table-striped table-hover ">
+            <thead class=" table-dark">
+
+            <th>
+                PersonName
+            </th>
+            <th>
+                CarName
+            </th>
+            <th>
+                Cnic
+            </th>
+            <th>
+                PhoneNumber
+            </th>
+            <th>
+                Email
+            </th>
+            <th>
+                CarPlateNumber
+            </th>
+            <th>
+                CarColor
+            </th>
+            <th>
+                PickupLocation
+            </th>
+            <th>
+                PickUpDate
+            </th>
+            <th>
+                ReturnDate
+            </th>
+            <th>
+                CarType
+            </th>
+            <th>
+                SomeInformation
+            </th>
+
+
+            </thead>
+            <tbody class=" border border-dark">
+                @foreach (var booking in Model)
+                {
+                    <tr>
+                        <td>@booking.PersonName</td>
+                        <td>@booking.CarName</td>
+                        <td>@booking.Cnic</td>
+                        <td>@booking.PhoneNumber</td>
+                        <td>@booking.Email</td>
+                        <td>@booking.CarPlateNumber</td>
+                        <td>@booking.CarColor</td>
+                        <td>@booking.PickupLocation</td>
+                        <td>@booking.PickUpDate</td>
+                        <td>@booking.ReturnDate</td>
+                        <td>@booking.CarType</td>
+                        <td>@booking.SomeInformation</td>
+                    </tr>
+                }
+            </tbody>
+
+        </table>
+    </div>
+</body>
+</html>
+<div class="d-flex justify-content-center">
+    @Html.ActionLink(" Back to Home", "Admin", "Admin", null, new { @class = "btn mb-5 px-5 py-3 mt-2 bg-info rounded-3 text-dark fa fa-arrow-left me-2" })
+</div>

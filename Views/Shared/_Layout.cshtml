@@ -1,0 +1,131 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Car Rental System</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+          integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+          crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+
+        .jumbotron {
+            background-image: url('car-rental-background.jpg');
+            background-size: cover;
+            color: white;
+            padding: 100px 25px;
+            text-align: center;
+        }
+
+        .btn {
+            margin-top: 20px;
+        }
+
+        .feature-box {
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+
+        .bd-footer a {
+            color: black;
+        }
+    </style>
+</head>
+<body>
+   
+       <nav class="navbar navbar-expand-lg bg-info navbar-dark shadow fixed-top">
+        <a class="navbar-brand text-light ps-5" href="@Url.Action("index", "Home")">DriveHub</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse justify-content-between" id="navbarNav">
+        <ul class="navbar-nav mx-auto"> 
+            <li class="nav-item">
+                    <a class="nav-link text-light" href="@Url.Action("index", "Home")">Home</a>
+            </li>
+            <li class="nav-item">
+                    <a class="nav-link text-light" href="@Url.Action("About", "Home")">About us</a>
+
+                
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle text-light" href="#" id="navbarDropdownServices" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Services
+                </a>
+                <div class="dropdown-menu bg-info text-light" aria-labelledby="navbarDropdownServices">
+                        <a class="dropdown-item bg-info text-light" href="@Url.Action("Rental", "Home")">Rentals</a>
+                        <a class="dropdown-item bg-info text-light" href="@Url.Action("Pakage", "Home")">Special Packages</a>
+                        <a class="dropdown-item bg-info text-light" href="@Url.Action("Insurance", "Home")">Insurance Options</a>
+                </div>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-light" href="@Url.Action("Contact", "Home")">Contact us</a>
+            </li>
+        </ul>
+        <ul class="navbar-nav">
+            <li class="ms-lg-auto mb-3 mt-lg-0">
+@*                     <button class="btn btn-outline-light rounded-pill" style="height: 40px; width: 90px;" onclick="window.location.href='@Url.Action("Login", "User")'">Login</button> *@
+                    <a href="/Identity/Account/Login" style="height: 40px; width: 90px;" class="btn btn-outline-light rounded-pill">Login</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+  
+   
+        
+            @RenderBody()
+
+        <footer class="bd-footer py-1 py-md-2 mt-5 border-top text-white bg-info">
+            <div class="container py-5 px-4 px-md-3 text-body-secondary">
+                <div class="row">
+                    <div id="col1" class="col-12 col-lg mb-1  mb-4 mb-lg-0">
+                        <span class="fs-5 fw-bold text-white">DriveHub.com</span>
+                        <p class="text-light">&copy; 2024 DriveHub.com all rights reserved.</p>
+                        <div class="row mt-3">
+                            <div class="col-6 col-lg-12">
+                                <p class="text-white mb-1 fw-bold " style="font-size:large;">Follow Us on:</p>
+                                <a href="#" class="me-2"><i class="bi bi-facebook"></i></a>
+                                <a href="#" class="me-2"><i class="bi bi-twitter"></i></a>
+                                <a href="#" class="me-2"><i class="fab bi-linkedin"></i></a>
+                            </div>
+                            <div class="col-6 col-lg-12 text-end mt-3 mb-2">
+                                <a class="top" href="#">Back to Top</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="col2" class="col-6 col-lg offset-lg-1 mb-1 mt-3 mt-lg-0 ps-sm-5 ps-lg-0 border-left">
+                        <h5 class="text-white fwt-bold mb-3 fst-italic text-decoration-underline">Links</h5>
+                        <ul class="list-unstyled">
+                            <li class="mb-1"><a href="@Url.Action("index", "Home")">Home</a></li>
+                            <li class="mb-1"><a href="@Url.Action("About", "Home")">About</a></li>
+                            <li class="mb-1"><a href="@Url.Action("Contact", "Home")">Contact Us</a></li>
+                        </ul>
+                    </div>
+                    <div id="col3" class="col-6 col-lg offset-lg-1 mb-1 mt-3 mt-lg-0 ps-sm-5 ps-lg-0 border-left">
+                        <h5 class="text-white fwt-bold mb-3 fst-italic text-decoration-underline">Services</h5>
+                        <ul class="list-unstyled">
+                            <li class="mb-1"><a href="@Url.Action("Rental", "Home")">Rentals</a></li>
+                            <li class="mb-1"><a href="@Url.Action("Pakage", "Home")">Special Packages</a></li>
+                            <li class="mb-1"><a href="@Url.Action("Insurance", "Home")">Insurance Option</a></li>
+                            <li class="mb-1"><a href=" @Url.Action("Available", "Home")">Available Cars</a></li>
+                            <li class="mb-1"><a href="@Url.Action("Booked", "Home")">Booked Cars</a></li>
+
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </footer>
+   @RenderSection("scripts",required:false)
+
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
