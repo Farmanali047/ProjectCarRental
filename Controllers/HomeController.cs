@@ -19,11 +19,29 @@ namespace ProjectCarRental.Controllers
 
         public IActionResult Index()
         {
-            return View();
+            {
+                string data = String.Empty;
+                if (HttpContext.Request.Cookies.ContainsKey("first_request"))
+                {
+                    string firstVisitedDateTime = HttpContext.Request.Cookies["first_request"];
+                    data = "Welcome back " + firstVisitedDateTime;
+
+                }
+                else
+                {
+                    CookieOptions option = new CookieOptions();
+                    option.Expires = System.DateTime.Now.AddDays(3);
+                    data = "you visited firs time";
+                    HttpContext.Response.Cookies.Append("first_request", System.DateTime.Now.ToString(), option);
+                }
+                return View("index", data);
+            }
         }
         public IActionResult About()
         {
-            return View();
+
+            HttpContext.Response.Cookies.Delete("first_request");
+            return View("Index");
         }
        public IActionResult Contact()
         {

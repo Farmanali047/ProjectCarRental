@@ -31,6 +31,7 @@
                 <hr>
                 <form method="post" action="/Admin/CarRegisteration" enctype="multipart/form-data">
                     <div class="row g-3">
+                        
                         <div class="col-md-6">
                             <label asp-for="CarName">Car Name</label>
                             <input asp-for="CarName" type="text" class="form-control" id="CarName" name="CarName" placeholder="Enter Car Name" required>
@@ -52,8 +53,8 @@
                             <input asp-for="Rental" type="text" class="form-control" name="Rental" id="Registeration Number" placeholder="Enter the Rental" required>
                         </div>
                         <div class="mb-3">
-                            <label asp-for="CarImage"> Car Image (Upload)</label>
-                            <input asp-for="CarImage" class="form-control" name="CarImage" id="custom-file" type="file" required>
+                            <label > Car Image (Upload)</label>
+                            <input class="form-control" name="CarImage" id="custom-file" type="file" required>
                         </div>
                     </div>
                     <div class="row justify-content-end">

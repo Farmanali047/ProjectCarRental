@@ -11,10 +11,7 @@ namespace ProjectCarRental.Models
         public string CarModel { get; set; }
         public int RegisterationNumber {  get; set; }
         public int Rental {  get; set; }
-
-        public IFormFile CarImage { get; set; }
-        public string ImageName { get; set; }
-        public string ImagePath { get; set; }
+        public string ImgUrl { get; set; }
         public int Id { get; set; }
 
 

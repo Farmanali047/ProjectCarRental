@@ -10,5 +10,6 @@ namespace ProjectCarRental.Data
             : base(options)
         {
         }
+        public DbSet<ProjectCarRental.Models.CarRegisteration> CarRegisteration { get; set; } = default!;
     }
 }

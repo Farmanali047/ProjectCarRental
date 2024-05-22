@@ -50,7 +50,9 @@
             <th>
                 Rental
             </th>
-            
+            <th>
+                Action
+            </th>
             
             </thead>
             <tbody class=" border border-dark">
@@ -63,9 +65,13 @@
                         <td>@car.CarModel</td>
                         <td>@car.RegisterationNumber</td>
                         <td>@car.Rental</td>
-        @*                <td>@car.ImagePath</td> *@
+        @*                <td>@car.ImgUrl</td> *@
                         
-                        
+                        <td>
+                            <a asp-action="UpdateRental" asp-route-id="@car.Id" class="btn btn-warning">Edit</a>
+
+                            <a asp-action="Delete" asp-route-id="@car.Id" class="btn btn-danger">Delete</a>
+                        </td>
                     </tr>
                 }
             </tbody>

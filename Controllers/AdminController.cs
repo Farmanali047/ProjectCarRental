@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using ProjectCarRental.Models;
+using ProjectCarRental.Models.Interfaces;
 
 namespace ProjectCarRental.Controllers
 {
@@ -18,48 +19,44 @@ namespace ProjectCarRental.Controllers
         {
             return View();
         }
-        public IActionResult DeleteCar()
+        public IActionResult Delete(int id)
         {
-            return View();
+
+            IRepository<CarRegisteration> repo = new GenericRepository<CarRegisteration>("Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=booking;Integrated Security=True;");
+            return View(repo.Get(id));
         }
         [HttpPost]
-        public IActionResult DeleteCar(string CarName, string CarColor, string CarModel, int RegisterationNumber, int rental)
+        public IActionResult Delete(CarRegisteration car)
         {
 
-            CarRegisteration cr = new CarRegisteration();
-            //cr.GetPath(cr.CarImage);
-            cr.CarName = CarName;
-            cr.CarColor = CarColor;
-            cr.CarModel = CarModel;
-            //cr.CarImage = CarImage;
-            cr.RegisterationNumber = RegisterationNumber;
-            cr.Rental = rental;
-            CarRegisterationRepository crRepository = new CarRegisterationRepository();
-            crRepository.Delete(cr);
+            IRepository<CarRegisteration> repo = new GenericRepository<CarRegisteration>("Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=booking;Integrated Security=True;");
+            repo.Delete(car);
+            return RedirectToAction("AllCars", "Admin");
+            //CarRegisteration cr = new CarRegisteration();
+            ////cr.GetPath(cr.CarImage);
+            //cr.CarName = CarName;
+            //cr.CarColor = CarColor;
+            //cr.CarModel = CarModel;
+            ////cr.CarImage = CarImage;
+            //cr.RegisterationNumber = RegisterationNumber;
+            //cr.Rental = rental;
+            //CarRegisterationRepository crRepository = new CarRegisterationRepository();
+            //crRepository.Delete(cr);
 
-            return View();
+            //return View();
         }
 
-        public IActionResult UpdateRental()
+        public IActionResult UpdateRental(int id)
         {
-            return View();
+            IRepository<CarRegisteration> repo = new GenericRepository<CarRegisteration>("Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=booking;Integrated Security=True;");
+            return View(repo.Get(id));
         }
         [HttpPost]
-        public IActionResult UpdateRental(string CarName, string CarColor, string CarModel, int RegisterationNumber, int rental)
+        public IActionResult UpdateRental(CarRegisteration d)
         {
-
-            CarRegisteration cr = new CarRegisteration();
-            //cr.GetPath(cr.CarImage);
-            cr.CarName=CarName;
-            cr.CarColor=CarColor;
-            cr.CarModel=CarModel;
-            //cr.CarImage = CarImage;
-            cr.RegisterationNumber = RegisterationNumber;
-            cr.Rental = rental;
-            CarRegisterationRepository crRepository = new CarRegisterationRepository();
-            crRepository.Update(cr);
-            
-            return View();
+            IRepository<CarRegisteration> repo = new GenericRepository<CarRegisteration>("Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=booking;Integrated Security=True;");
+            repo.Update(d);
+            return RedirectToAction("AllCars", "Admin");
         }
 
         public IActionResult ViewBookings()
@@ -88,33 +85,8 @@ namespace ProjectCarRental.Controllers
         {
             return View();
         }
-        [HttpPost]
-        public IActionResult CarRegisteration(CarRegisteration cr)
-        {
-            cr.ImagePath = getImageUrl(cr.CarImage);
-            //cr.ImageName = pic.FileName;
-            //cr.CarImage = CarImage;
-            CarRegisterationRepository crRepository = new CarRegisterationRepository();
-            crRepository.Add(cr);
-            return View();
-        }
-        //public string GetPath(IFormFile picture)
-        //{
-        //    string wwwrootPath = _env.WebRootPath;
-        //    string path = Path.Combine(Path.Combine(wwwrootPath, "Cars"), "Booking");
-        //    if (!Directory.Exists(path))
-        //        Directory.CreateDirectory(path);
-        //    if (picture != null && picture.Length > 0)
-        //    {
-        //        path = Path.Combine(path, picture.FileName);
 
-        //        using (var fileStream = new FileStream(path, FileMode.Create))
-        //        {
-        //            picture.CopyTo(fileStream);
-        //        }
-        //    }
-        //    return ;
-        //}
+
         public string getImageUrl(IFormFile myFile)
         {
             if (myFile != null && myFile.Length > 0)
@@ -136,6 +108,22 @@ namespace ProjectCarRental.Controllers
             }
             return string.Empty;
         }
+
+        [HttpPost]
+        public IActionResult CarRegisteration(CarRegisteration cr,IFormFile carImage)
+        {
+            cr.ImgUrl = getImageUrl(carImage);
+            //cr.ImageName = pic.FileName;
+            //cr.CarImage = CarImage;
+            //CarRegisterationRepository crRepository = new CarRegisterationRepository();
+            //crRepository.Add(cr);
+
+            IRepository<CarRegisteration> repo = new GenericRepository<CarRegisteration>("Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=booking;Integrated Security=True;");
+            repo.Add(cr);
+           // repo.Delete(cr);
+            return View();
+        }
+       
 
     }
 }
