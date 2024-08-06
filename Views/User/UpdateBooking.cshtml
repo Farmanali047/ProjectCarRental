@@ -1,0 +1,124 @@
+﻿@model ProjectCarRental.Models.Bookingform
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<style>
+    body {
+        background-color: #f0f0f0;
+    }
+
+    .booking-form {
+        background-color: #0a0a23;
+        color: aliceblue;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        max-width: 700px;
+        margin: 50px auto;
+    }
+
+        .booking-form h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+    .form-group {
+        margin-bottom: 20px;
+    }
+
+        .form-group label {
+            font-weight: bold;
+        }
+
+    .btn-book {
+        width: 100%;
+    }
+</style>
+
+<body>
+    <div class="container col-lg-6 col-md-10 col-sm-12">
+        <div class="booking-form">
+            <h2 style="color:#2C7865">Update Booking Car</h2>
+            <form id="bookingForm">
+                @Html.AntiForgeryToken()
+                <div class="row g-3">
+                    <div class="form-group col-md-6">
+                    <label asp-for="PersonName">Booking Person's Name</label>
+                    <input asp-for="PersonName" type="text" class="form-control" id="bookingPerson" name="PersonName" placeholder="Enter booking person's name" required>
+                </div>
+                <input asp-for="Id" type="number" style="display:none;" class="form-control" id="bookingPerson" name="Id" required>
+                    <div class="form-group col-md-6">
+                    <label asp-for="CarName">Booking Car Name</label>
+                    <input asp-for="CarName" type="text" class="form-control" id="bookingPerson" name="CarName" placeholder="Enter booking Car Name" required>
+                </div>
+                    <div class="form-group col-md-6">
+                    <label asp-for="Cnic">CNIC Number</label>
+                    <input asp-for="Cnic" type="text" class="form-control" id="bookingPerson" name="Cnic" pattern="\d{13}" placeholder="Enter CNIC number without dashes" required>
+                </div>
+                    <div class="form-group col-md-6">
+                    <label asp-for="PhoneNumber">Phone Number</label>
+                    <input asp-for="PhoneNumber" type="tel" class="form-control" id="bookingPerson" name="PhoneNumber" placeholder="Enter phone number" required>
+                </div>
+                    <div class="form-group col-md-6">
+                    <label asp-for="Email">Email</label>
+                    <input asp-for="Email" type="email" class="form-control" id="bookingPerson" name="Email" placeholder="Enter email" required>
+                </div>
+                    <div class="form-group col-md-6">
+                    <label asp-for="CarPlateNumber">Car Plate Number</label>
+                    <input asp-for="CarPlateNumber" type="text" class="form-control" id="bookingPerson" name="CarPlateNumber" placeholder="Enter car plate number" required>
+                </div>
+                    <div class="form-group col-md-6">
+                    <label asp-for="CarColor">Car Color</label>
+                    <input asp-for="CarColor" type="text" class="form-control" id="bookingPerson" name="CarColor" placeholder="Enter car color" required>
+                </div>
+                    <div class="form-group col-md-6">
+                    <label asp-for="PickupLocation">Pickup Location</label>
+                    <input asp-for="PickupLocation" type="text" class="form-control" id="bookingPerson" name="PickupLocation" placeholder="Enter pickup location" required>
+                </div>
+                    <div class="form-group col-md-6">
+                    <label asp-for="PickUpDate">Pickup Date</label>
+                    <input asp-for="PickUpDate" type="date" class="form-control" id="bookingPerson" name="PickUpDate" required>
+                </div>
+                    <div class="form-group col-md-6">
+                    <label asp-for="ReturnDate">Return Date</label>
+                    <input asp-for="ReturnDate" type="date" class="form-control" id="bookingPerson" name="ReturnDate" required>
+                </div>
+                    <div class="form-group col-md-6">
+                    <label asp-for="Quantity">Quantity</label>
+                    <select asp-for="Quantity" class="form-control" id="Quantity" name="Quantity" required>
+                        <option value="">Select a Quantity</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                    </select>
+                </div>
+                    <div class="form-group col-md-6">
+                    <label asp-for="SomeInformation">Additional Information</label>
+                    <textarea asp-for="SomeInformation" class="form-control" id="additionalInfo" rows="3" name="SomeInformation" placeholder="Enter any additional information"></textarea>
+                </div>
+                </div>
+                <button type="button" class="btn text-light btn-book" style="background-color:#2C7865" onclick="submitBookingForm(event)">Update</button>
+            </form>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <script>
+        function submitBookingForm() {
+            event.preventDefault()
+            var formData = $("#bookingForm").serialize();
+
+            $.ajax({
+                url: '@Url.Action("UpdateBooking", "User")',
+                type: 'POST',
+                data: formData,
+                success: function (response) {
+                    alert('Booking updated successfully!');
+                },
+                error: function (xhr, status, error) {
+                    alert('An error occurred: ' + error);
+                }
+            });
+        }
+    </script>
+</body>

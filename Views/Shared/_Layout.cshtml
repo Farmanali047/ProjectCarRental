@@ -33,15 +33,16 @@
             margin-bottom: 20px;
         }
 
+     
         .bd-footer a {
-            color: black;
+            color: whitesmoke;
         }
     </style>
 </head>
 <body>
-   
-       <nav class="navbar navbar-expand-lg bg-info navbar-dark shadow fixed-top">
-        <a class="navbar-brand text-light ps-5" href="@Url.Action("index", "Home")">DriveHub</a>
+<header>
+  <nav class="navbar navbar-expand-lg  navbar-dark shadow sticky-top" style="background-color:#2C7865">
+    <a class="navbar-brand text-light ps-5" href="@Url.Action("index", "Home")">DriveHub</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
@@ -59,10 +60,10 @@
                 <a class="nav-link dropdown-toggle text-light" href="#" id="navbarDropdownServices" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     Services
                 </a>
-                <div class="dropdown-menu bg-info text-light" aria-labelledby="navbarDropdownServices">
-                        <a class="dropdown-item bg-info text-light" href="@Url.Action("Rental", "Home")">Rentals</a>
-                        <a class="dropdown-item bg-info text-light" href="@Url.Action("Pakage", "Home")">Special Packages</a>
-                        <a class="dropdown-item bg-info text-light" href="@Url.Action("Insurance", "Home")">Insurance Options</a>
+                <div class="dropdown-menu text-light" aria-labelledby="navbarDropdownServices">
+                        <a class="dropdown-item  text-light" style="background-color:#2C7865" href="@Url.Action("Rental", "Home")">Rentals</a>
+                        <a class="dropdown-item  text-light" style="background-color:#2C7865" href="@Url.Action("Pakage", "Home")">Special Packages</a>
+                        <a class="dropdown-item  text-light" style="background-color:#2C7865" href="@Url.Action("Insurance", "Home")">Insurance Options</a>
                 </div>
             </li>
             <li class="nav-item">
@@ -72,17 +73,18 @@
         <ul class="navbar-nav">
             <li class="ms-lg-auto mb-3 mt-lg-0">
 @*                     <button class="btn btn-outline-light rounded-pill" style="height: 40px; width: 90px;" onclick="window.location.href='@Url.Action("Login", "User")'">Login</button> *@
-                    <a href="/Identity/Account/Login" style="height: 40px; width: 90px;" class="btn btn-outline-light rounded-pill">Login</a>
+                    @* <a href="/Identity/Account/Login" style="height: 40px; width: 90px;" class="btn btn-outline-light rounded-pill">Login</a> *@
+                    <partial name="_LoginPartial" />
             </li>
         </ul>
     </div>
 </nav>
-  
-   
-        
-            @RenderBody()
+</header>
 
-        <footer class="bd-footer py-1 py-md-2 mt-5 border-top text-white bg-info">
+
+    @RenderBody()
+
+    <footer class="bd-footer py-1 py-md-2 mt-5 border-top text-white " style="background-color:#2C7865">
             <div class="container py-5 px-4 px-md-3 text-body-secondary">
                 <div class="row">
                     <div id="col1" class="col-12 col-lg mb-1  mb-4 mb-lg-0">
@@ -91,9 +93,9 @@
                         <div class="row mt-3">
                             <div class="col-6 col-lg-12">
                                 <p class="text-white mb-1 fw-bold " style="font-size:large;">Follow Us on:</p>
-                                <a href="#" class="me-2"><i class="bi bi-facebook"></i></a>
-                                <a href="#" class="me-2"><i class="bi bi-twitter"></i></a>
-                                <a href="#" class="me-2"><i class="fab bi-linkedin"></i></a>
+                            <a href="https://www.facebook.com/photo.php?fbid=365939255880944&set=a.107679801706892&type=3&mibextid=VhDh1V" class="me-2"><i class="bi bi-facebook"></i></a>
+                            <a href="https://x.com/ali_farman75530?s=09" class="me-2"><i class="bi bi-twitter"></i></a>
+                            <a href="https://www.linkedin.com/in/farman-ali-151684289?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" class="me-2"><i class="fab bi-linkedin"></i></a>
                             </div>
                             <div class="col-6 col-lg-12 text-end mt-3 mb-2">
                                 <a class="top" href="#">Back to Top</a>
@@ -103,7 +105,7 @@
                     <div id="col2" class="col-6 col-lg offset-lg-1 mb-1 mt-3 mt-lg-0 ps-sm-5 ps-lg-0 border-left">
                         <h5 class="text-white fwt-bold mb-3 fst-italic text-decoration-underline">Links</h5>
                         <ul class="list-unstyled">
-                            <li class="mb-1"><a href="@Url.Action("index", "Home")">Home</a></li>
+                            <li class="mb-1 " style="color:white"><a href="@Url.Action("index", "Home")">Home</a></li>
                             <li class="mb-1"><a href="@Url.Action("About", "Home")">About</a></li>
                             <li class="mb-1"><a href="@Url.Action("Contact", "Home")">Contact Us</a></li>
                         </ul>
@@ -123,9 +125,11 @@
             </div>
         </footer>
    @RenderSection("scripts",required:false)
+   <script src="~/lib/jquery/dist/jquery.min.js"></script>
+   <script src="~/js/site.js"></script>
 
-
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+@* 
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script> *@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>

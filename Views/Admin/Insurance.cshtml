@@ -1,0 +1,74 @@
+﻿@{
+    Layout = null;
+}
+@model Insurance
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+<style>
+    body {
+        background-color: #f0f0f0;
+    }
+
+    .booking-form {
+        background-color: #0a0a23;
+        color: aliceblue;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        max-width: 700px;
+        margin: 50px auto;
+    }
+
+        .booking-form h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        }
+
+    .form-group {
+        margin-bottom: 20px;
+    }
+
+        .form-group label {
+            font-weight: bold;
+        }
+
+    .btn-book {
+        width: 100%;
+    }
+</style>
+<body>
+    <div class="container mt-5 pt-5">
+        <div class="booking-form">
+            <h2 class="" style="color:#2C7865">Insurance</h2>
+            <form method="post" action="/Admin/Insurance">
+                <div class="form-group">
+                    <label asp-for="Heading">Heading</label>
+                    <input asp-for="Heading" type="text" class="form-control" id="bookingPerson" name="Heading" placeholder="Enter  the Heading" required>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Title">Title</label>
+                    <input asp-for="Title" type="text" class="form-control" id="bookingPerson" name="Title" placeholder="Enter the Title" required>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Price">Price</label>
+                    <input asp-for="Price" type="number" class="form-control" id="bookingPerson" name="Price" placeholder="Enter Price" required>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Coverage">Coverage</label>
+                    <input asp-for="Coverage" type="number" class="form-control" id="bookingPerson" name="Coverage" placeholder="Enter the Coverage" required>
+                </div>
+               
+                
+                <div class="form-group">
+                    <label asp-for="Description">Description</label>
+                    <input asp-for="Description" type="text" class="form-control" id="bookingPerson" name="Description" placeholder="Enter Description" required>
+                </div>
+                
+                <button type="submit" class="btn text-light btn-book" style="background-color:#2C7865">Add Insurance </button>
+            </form>
+        </div>
+    </div>
+    <script src="/_framework/aspnetcore-browser-refresh.js"></script>
+</body>

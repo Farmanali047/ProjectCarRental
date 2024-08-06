@@ -1,0 +1,53 @@
+﻿@model List<Bookingform>
+
+
+        <table class="table table-striped table-hover">
+            <thead class="table-dark">
+                <tr>
+                    <th>PersonName</th>
+                    <th>CarName</th>
+                    <th>Cnic</th>
+                    <th>PhoneNumber</th>
+                    <th>Email</th>
+                    <th>CarPlateNumber</th>
+                    <th>CarColor</th>
+                    <th>PickupLocation</th>
+                    <th>PickUpDate</th>
+                    <th>ReturnDate</th>
+                    <th>SomeInformation</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody class="border border-dark">
+                @foreach (var booking in Model)
+                {
+                    <tr>
+                        <td>@booking.PersonName</td>
+                        <td>@booking.CarName</td>
+                        <td>@booking.Cnic</td>
+                        <td>@booking.PhoneNumber</td>
+                        <td>@booking.Email</td>
+                        <td>@booking.CarPlateNumber</td>
+                        <td>@booking.CarColor</td>
+                        <td>@booking.PickupLocation</td>
+                        <td>@booking.PickUpDate</td>
+                        <td>@booking.ReturnDate</td>
+                        <td>@booking.SomeInformation</td>
+                        <td>
+                            @if (booking.Status == "Accepted")
+                            {
+                                <span class="fs-1 text-success" style="font-size: 3rem;">✔</span>
+                            }
+                            else
+                            {
+                                <form action="~/Admin/Accept/@booking.Id" method="post" style="display:inline;">
+                                    <button type="submit" class="btn btn-warning">Accept</button>
+                                </form>
+                            }
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+       

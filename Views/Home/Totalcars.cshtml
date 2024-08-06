@@ -51,9 +51,10 @@
                         <p class="car-info">Color: @v.CarColor</p>
                         <p class="car-info">Year: @v.CarModel</p>
                         <p class="car-info">Price: @v.Rental</p>
+                        
                     </div>
                     <div class="text-center">
-                        <a href="@Url.Action("Bookingform", "Home")" class="btn btn-primary btn-rent">Rent Now</a>
+                        <a href="/User/Bookingform?car=@v.CarName &plate=@v.RegisterationNumber &color=@v.CarColor" class="btn text-light btn-rent" style="background-color:#2C7865">Rent Now</a>
                     </div>
                 </div>
             </div>

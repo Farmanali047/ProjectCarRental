@@ -5,10 +5,10 @@
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 <html>
 <head>
-    <div class="container h1 display-5 text-center px-2  shadow mt-5 bg-info">
+    <div class="container h1  text-center px-2  shadow mt-5">
         <div class="row">
             <div class="col">
-                <h2 class="text-center "> List of Booking Cars</h2>
+                <h2 class="text-center text-light " style="background-color:#2C7865"> List of Booking Cars</h2>
             </div>
         </div>
     </div>
@@ -31,6 +31,9 @@
         <table class="table table-striped table-hover ">
             <thead class=" table-dark">
 
+            <th>
+                Id
+            </th>
             <th>
                 PersonName
             </th>
@@ -62,10 +65,14 @@
                 ReturnDate
             </th>
             <th>
-                CarType
+                Quantity
             </th>
+           
             <th>
                 SomeInformation
+            </th>
+            <th>
+                Options
             </th>
 
 
@@ -74,6 +81,7 @@
                 @foreach (var booking in Model)
                 {
                     <tr>
+                        <td>@booking.Id</td>
                         <td>@booking.PersonName</td>
                         <td>@booking.CarName</td>
                         <td>@booking.Cnic</td>
@@ -84,8 +92,14 @@
                         <td>@booking.PickupLocation</td>
                         <td>@booking.PickUpDate</td>
                         <td>@booking.ReturnDate</td>
-                        <td>@booking.CarType</td>
+                        <td>@booking.Quantity</td>
+                        @* <td>@booking.CarType</td> *@
                         <td>@booking.SomeInformation</td>
+                        <td>
+                            <a href="~/User/UpdateBooking/@booking.Id" class="btn btn-warning">Edit</a>
+
+                            <a href="~/User/Removed/@booking.Id"  class="btn btn-danger mt-2">Cancel</a>
+                        </td>
                     </tr>
                 }
             </tbody>

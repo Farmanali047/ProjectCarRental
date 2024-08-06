@@ -1,4 +1,4 @@
-﻿@model List<CarRegisteration>
+﻿@model CarData
 @{
     Layout = null;
 }
@@ -21,10 +21,13 @@
 
 <body>
 
-    <div class="container h1 display-5 text-center px-2  shadow mt-5 bg-info">
+    <h3>
+        @Model.data
+    </h3>
+    <div class="container h1 display-5  text-light text-center px-2  shadow mt-5 " style="background-color:#2C7865">
         <div class="row">
             <div class="col">
-                <h2 class="text-center "> list of total cars</h2>
+                <h2 class="text-center "> List Of Total Cars</h2>
             </div>
         </div>
     </div>
@@ -53,10 +56,10 @@
             <th>
                 Action
             </th>
-            
+
             </thead>
             <tbody class=" border border-dark">
-                @foreach (var car in Model)
+                @foreach (var car in Model.registrations)
                 {
                     <tr>
                         <td>@car.Id</td>
@@ -65,8 +68,8 @@
                         <td>@car.CarModel</td>
                         <td>@car.RegisterationNumber</td>
                         <td>@car.Rental</td>
-        @*                <td>@car.ImgUrl</td> *@
-                        
+                        @*                <td>@car.ImgUrl</td> *@
+
                         <td>
                             <a asp-action="UpdateRental" asp-route-id="@car.Id" class="btn btn-warning">Edit</a>
 

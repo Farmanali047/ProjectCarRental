@@ -13,7 +13,7 @@ namespace ProjectCarRental.Models
         public int Rental {  get; set; }
         public string ImgUrl { get; set; }
         public int Id { get; set; }
-
+        
 
 
 

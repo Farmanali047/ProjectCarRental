@@ -1,4 +1,5 @@
-﻿@{
+﻿@model List<Pakage>
+@{
     ViewData["Title"] = "Pakage Page";
 }
 <style>
@@ -39,20 +40,23 @@
 </style>
 <div class="container">
     <div class="row">
-        <div class="col-md-4 mt-4 pt-4">
-            <div class="package-card">
-                <h2 class="package-title">Weekend Getaway</h2>
-                <p class="package-description">Escape for the weekend with our special package.</p>
-                <p class="package-price">$200</p>
-                <a href="@Url.Action("Bookingform", "Home")" class="btn btn-primary">Book Now </a>
+        @foreach (var v in Model)
+        {
+            <div class="col-md-4 mt-4 pt-4">
+                <div class="package-card">
+                <h2 class="package-title">@v.Heading</h2>
+                <p class="package-description">@v.Description</p>
+                <p class="package-price">$@v.Price</p>
+                <a href="@Url.Action("Totalcars", "Home")" class="btn btn-primary">Book Now </a>
             </div>
         </div>
-        <div class="col-md-4 mt-4 pt-4">
+        }
+       @*  <div class="col-md-4 mt-4 pt-4">
             <div class="package-card">
                 <h2 class="package-title">Family Vacation</h2>
                 <p class="package-description">Plan a memorable family vacation with our family-friendly package.</p>
                 <p class="package-price">$300</p>
-                <a href="@Url.Action("Bookingform", "Home")" class="btn btn-primary">Book Now </a>
+                <a href="@Url.Action("Totalcars", "Home")" class="btn btn-primary">Book Now </a>
             </div>
         </div>
         <div class="col-md-4 mt-4 pt-4">
@@ -60,8 +64,8 @@
                 <h2 class="package-title">Road Trip Adventure</h2>
                 <p class="package-description">Embark on an epic road trip adventure with our all-inclusive package.</p>
                 <p class="package-price">$350</p>
-                <a href="@Url.Action("Bookingform", "Home")" class="btn btn-primary">Book Now </a>
+                <a href="@Url.Action("Totalcars", "Home")" class="btn btn-primary">Book Now </a>
             </div>
-        </div>
+        </div> *@
     </div>
 </div>

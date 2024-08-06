@@ -1,6 +1,7 @@
 ﻿using Microsoft.Data.SqlClient;
 using ProjectCarRental.Models.Interfaces;
-
+using Dapper;
+using System.Drawing;
 namespace ProjectCarRental.Models
 {
     public class GenericRepository<TEntity> : IRepository<TEntity>
@@ -28,12 +29,14 @@ namespace ProjectCarRental.Models
             using (var connection = new SqlConnection(connectionString))
             {
                 connection.Open();
-                var comm = new SqlCommand(query, connection);
-                foreach (var prop in properties)
-                {
-                    comm.Parameters.AddWithValue("@" + prop.Name, prop.GetValue(entity));
-                }
-                comm.ExecuteNonQuery();
+                connection.Execute(query, entity);
+
+                //var comm = new SqlCommand(query, connection);
+                //foreach (var prop in properties)
+                //{
+                //    comm.Parameters.AddWithValue("@" + prop.Name, prop.GetValue(entity));
+                //}
+                //comm.ExecuteNonQuery();
             }
         }
 
@@ -46,19 +49,34 @@ namespace ProjectCarRental.Models
 
             var properties = typeof(TEntity).GetProperties().Where(x => x.Name != primaryKey && x.Name!="CarImage" && x.Name!="ImgUrl");
 
-            var setClause = string.Join(",", properties.Select(a => $"{a.Name}=@{a.Name}"));
+            var idProp = typeof(TEntity).GetProperties().Where(x => x.Name == primaryKey);
+           
 
-            var query = $"update {tableName} set {setClause} where {primaryKey}=@{primaryKey} ";
+            var setClause = string.Join(",", properties.Select(a => $"{a.Name}=@{a.Name}"));
+            int ourId=0;
+            
+            foreach (var prop in idProp)
+            {
+                if (prop.Name == "Id")
+                { string temp = (prop.GetValue(entity).ToString());
+                    ourId = int.Parse(temp);
+                    break;
+                } 
+            }
+
+
+            var query = $"update {tableName} set {setClause} where {primaryKey}= {ourId}";
             using (var connection = new SqlConnection(connectionString))
             {
-                connection.Open();
-                var comm = new SqlCommand(query, connection);
-                foreach (var prop in properties)
-                {
-                    comm.Parameters.AddWithValue("@" + prop.Name, prop.GetValue(entity));
-                }
-                comm.Parameters.AddWithValue("@" + primaryKey, typeof(TEntity).GetProperty(primaryKey).GetValue(entity));
-                comm.ExecuteNonQuery();
+                connection.Execute(query, entity);
+
+                //var comm = new SqlCommand(query, connection);
+                //foreach (var prop in properties)
+                //{
+                //    comm.Parameters.AddWithValue("@" + prop.Name, prop.GetValue(entity));
+                //}
+                //comm.Parameters.AddWithValue("@" + primaryKey, typeof(TEntity).GetProperty(primaryKey).GetValue(entity));
+                //comm.ExecuteNonQuery();
             }
         }
 
@@ -72,8 +90,10 @@ namespace ProjectCarRental.Models
             {
                 connection.Open();
                 SqlCommand cmd = new SqlCommand(query, connection);
-                cmd.Parameters.AddWithValue("@Id",entity.GetType().GetProperty("Id").GetValue(entity)); 
-                cmd.ExecuteNonQuery();
+                connection.Execute(query, entity);
+
+                //cmd.Parameters.AddWithValue("@Id",entity.GetType().GetProperty("Id").GetValue(entity)); 
+                //cmd.ExecuteNonQuery();
             }
         }
 
@@ -112,18 +132,22 @@ namespace ProjectCarRental.Models
             {
                 connection.Open();
                 SqlCommand cmd = new SqlCommand(query, connection);
-                var reader = cmd.ExecuteReader();
-                var entities = new List<TEntity>();
-                while (reader.Read())
-                {
-                    var entity = Activator.CreateInstance<TEntity>();
-                    foreach (var prop in typeof(TEntity).GetProperties())
-                    {
-                        prop.SetValue(entity, Convert.ChangeType(reader[prop.Name], prop.PropertyType));
-                    }
-                    entities.Add(entity);
-                }
-                return entities;
+
+                return connection.Query<TEntity>(query).ToList();
+                //    var reader = cmd.ExecuteReader();
+                //    var entities = new List<TEntity>();
+                //    while (reader.Read())
+                //    {
+                //        var entity = Activator.CreateInstance<TEntity>();
+                //        foreach (var prop in typeof(TEntity).GetProperties())
+                //        {
+                //            prop.SetValue(entity, Convert.ChangeType(reader[prop.Name], prop.PropertyType));
+                //        }
+                //        entities.Add(entity);
+                //    }
+                //    return entities;
+
+
             }
         }
     }

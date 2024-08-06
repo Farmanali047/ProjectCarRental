@@ -8,7 +8,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Doctor Management - Admin Panel</title>
+    <title>Car Rental System - Admin Panel</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link href="~/lib/bootstrap/bootstrap css/bootstrap.min.css" rel="stylesheet" />
     <link href="~/css/my css/style.css" rel="stylesheet" />
@@ -16,79 +16,135 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <style>
         body {
-/*             background-image: url("~/images/feedback-bg.jpg");
- */            background-size: cover;
+            background-size: cover;
             background-repeat: no-repeat;
+        }
+
+        .nav-link:hover,
+        .nav-link.active {
+            background-color: #000;
+            color:#ddd;
+           
+        }
+
+        .sidebar {
+            background-color: #2C7865;
+            height: 100vh;
+        }
+
+        .menu-title {
+            font-size: 1.5rem;
+            color: whitesmoke;
+            font-weight: bold;
+        }
+
+        .main-content {
+            padding: 2rem;
+        }
+
+        .card-custom {
+            transition: transform 0.2s;
+        }
+
+            .card-custom:hover {
+                transform: scale(1.05);
+            }
+
+        .header {
+            background-color: #2C7865;
+            font-family: 'Verdana', Geneva, Tahoma, sans-serif;
+            color: white;
+            font-size:xx-large;
+            padding: 1rem;
+            border-radius: 0.5rem;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .sub-title {
+            color: #2C7865;
         }
     </style>
 </head>
+
 <body>
 
     <div class="container-fluid">
-        <div class="row ">
-            <div class="col-12 col-sm-4 col-md-3 col-xl-2 h-auto py-border-4 bg-info"
-                 >
-                <div id="sidebar" class="bg-transparent d-flex flex-column flex-shrink-0 h-100">
-                    <hr class="border border-dark border-3">
-                    <div class="px-2 d-flex align-items-center mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
-                        <span class="fs-4 text-dark">Menu</span>
+        <div class="row">
+            <div class="col-12 col-sm-4 col-md-3 col-xl-2 sidebar py-4">
+                <div id="sidebar" class="d-flex flex-column h-100">
+                    <hr class="border border-light border-3">
+                    <div class="px-2 d-flex align-items-center mb-md-0 me-md-auto text-decoration-none">
+                        <span class="menu-title">Menu</span>
                     </div>
-                    <hr class="border border-dark border-3">
+                    <hr class="border border-light border-3">
                     <ul class="nav nav-pills flex-column mb-auto">
                         <li class="nav-item">
-                            @Html.ActionLink("Home", "Admin", "Admin", null, new { @class = "nav-link link-body-emphasis text-dark active bi bi-arrow-right" })
+                            @Html.ActionLink("Home", "Admin", "Admin", null, new { @class = "nav-link link-body-emphasis text-light bi bi-arrow-right" })
                         </li>
                         <li>
-                            @Html.ActionLink("Add Car", "CarRegisteration", "Admin", null, new { @class = "nav-link link-body-emphasis text-dark bi bi-arrow-right" })
+                            @Html.ActionLink("Add Car", "CarRegisteration", "Admin", null, new { @class = "nav-link link-body-emphasis text-light bi bi-arrow-right" })
                         </li>
                         <li>
-                            @Html.ActionLink("View BookedCar", "Booked", "Home", null, new { @class = "nav-link link-body-emphasis text-dark bi bi-arrow-right" })
+                            @Html.ActionLink("View BookedCar", "Booked", "Admin", null, new { @class = "nav-link link-body-emphasis text-light bi bi-arrow-right" })
                         </li>
                         <li>
-                            @Html.ActionLink("Delete Car", "DeleteCar", "Admin", null, new { @class = "nav-link link-body-emphasis text-dark bi bi-arrow-right" })
+                            @Html.ActionLink("Delete Car", "AllCars", "Admin", null, new { @class = "nav-link link-body-emphasis text-light bi bi-arrow-right" })
                         </li>
                         <li>
-                            @Html.ActionLink("Update Car", "UpdateRental", "Admin", null, new { @class = "nav-link link-body-emphasis text-dark bi bi-arrow-right" })
+                            @Html.ActionLink("Update Car", "UpdateRental", "Admin", null, new { @class = "nav-link link-body-emphasis text-light bi bi-arrow-right" })
                         </li>
                         <li>
-                            @Html.ActionLink("View All Users", "ViewBookings", "Home", null, new { @class = "nav-link link-body-emphasis text-dark bi bi-arrow-right" })
+                            @Html.ActionLink("View All Users", "ViewBookings", "Admin", null, new { @class = "nav-link link-body-emphasis text-light bi bi-arrow-right" })
                         </li>
                         <li>
-                            @Html.ActionLink("View Available", "Available", "Home", null, new { @class = "nav-link link-body-emphasis text-dark bi bi-arrow-right" })
+                            @Html.ActionLink("View Available", "Available", "Admin", null, new { @class = "nav-link link-body-emphasis text-light bi bi-arrow-right" })
+                        </li>
+                        <li>
+                            @Html.ActionLink("View ALL Cars", "AllCars", "Admin", null, new { @class = "nav-link link-body-emphasis text-light bi bi-arrow-right" })
+                        </li>
+                        <li>
+                            @Html.ActionLink("View ALL User Request", "AllUserRequest", "Admin", null, new { @class = "nav-link link-body-emphasis text-light bi bi-arrow-right" })
+                        </li>
+                        <li>
+                            @Html.ActionLink("Add Insurance", "Insurance", "Admin", null, new { @class = "nav-link link-body-emphasis text-light bi bi-arrow-right" })
+                        </li>
+                        <li>
+                            @Html.ActionLink("Add Special Pakage", "Pakage", "Admin", null, new { @class = "nav-link link-body-emphasis text-light bi bi-arrow-right" })
                         </li>
                     </ul>
                 </div>
             </div>
 
-            <div class="col-12 col-sm-8 col-md-9 col-xl-10 p-md-5">
-                <div class="container py-5">
-                    <div class="h3 fw-bolder bg-info fst-italic text-center px-2 px-sm-0 shadow py-4 mb-3"
-                         style="font-family: Verdana, Geneva, Tahoma, sans-serif;">
-                        Car
-                        Rental - Admin Panel
+            <div class="col-12 col-sm-8 col-md-9 col-xl-10 main-content">
+                <div class="container">
+                    <div class="header text-center mb-4 shadow">
+                        Car Rental - Admin Panel
                     </div>
-                    <div class="h4 fw-bold my-4 w-75">
-                        Welcome Admin!, <div style="color:rgb(116, 34, 136);">
+                    <div class="h4 fw-bold my-4">
+                        Welcome Admin!,
+                        <div class="sub-title">
                             Here you can
                         </div>
                     </div>
                     <div class="row row-cols-1 row-cols-lg-2 g-4">
                         <div class="col">
-                            <div class="card p-3 p-lg-5 d-flex justify-content-center align-items-center text-center bg-primary text-white">
+                            <div class="card card-custom p-3 p-lg-5 d-flex justify-content-center align-items-center text-center shadow  bg-primary text-white">
                                 <i class="fa fa-plus-circle fs-1 mb-3"></i>
                                 <h3>
-                                    @Html.ActionLink("Add Car", "CarRegisteration", "Admin", null, new { @class = "nav-link link-body-emphasis text-white " })
+                                    @Html.ActionLink("Add Car", "CarRegisteration", "Admin", null, new { @class = "nav-link link-body-emphasis text-white" })
                                 </h3>
                             </div>
                         </div>
                         <div class="col">
-                            <div class="card p-3 p-lg-5 d-flex justify-content-center align-items-center text-center bg-success text-white">
+                            <div class="card card-custom p-3 p-lg-5 d-flex justify-content-center align-items-center text-center bg-success text-white">
                                 <i class="fa fa-eye fs-1 mb-3"></i>
-                                <h3>View Car</h3>
+                                <h3>
+                                    @Html.ActionLink("View Cars", "AllCars", "Admin", null, new { @class = "nav-link link-body-emphasis text-white" })
+                                </h3>
                             </div>
                         </div>
                         <div class="col">
-                            <div class="card p-3 p-lg-5 d-flex justify-content-center align-items-center text-center bg-warning text-white">
+                            <div class="card card-custom p-3 p-lg-5 d-flex justify-content-center align-items-center text-center bg-warning text-white">
                                 <i class="fa fa-edit fs-1 mb-3"></i>
                                 <h3>
                                     @Html.ActionLink("Update Car", "UpdateRental", "Admin", null, new { @class = "nav-link link-body-emphasis text-white" })
@@ -96,10 +152,10 @@
                             </div>
                         </div>
                         <div class="col">
-                            <div class="card p-3 p-lg-5 d-flex justify-content-center align-items-center text-center bg-danger text-white">
+                            <div class="card card-custom p-3 p-lg-5 d-flex justify-content-center align-items-center text-center bg-danger text-white">
                                 <i class="fa fa-trash fs-1 mb-3"></i>
                                 <h3>
-                                    @Html.ActionLink("Delete Car", "DeleteCar", "Admin", null, new { @class = "nav-link link-body-emphasis text-white" })
+                                    @Html.ActionLink("Delete Car", "AllCars", "Admin", null, new { @class = "nav-link link-body-emphasis text-white" })
                                 </h3>
                             </div>
                         </div>
@@ -109,7 +165,8 @@
 
         </div>
     </div>
-    <script src="~/lib/bootstrap/bootstrap js/bootstrap.bundle.min.js"></script>
+@*     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+ *@    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"></script>
 </body>
 
 </html>

@@ -1,8 +1,9 @@
 ﻿@{
     ViewData["Title"] = "Bookingform Page";
 }
-@model Bookingform
+@model ProjectCarRental.Models.Bookingform
 
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <style>
     body {
         background-color: #f0f0f0;
@@ -21,7 +22,6 @@
         .booking-form h2 {
             text-align: center;
             margin-bottom: 20px;
-            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
         }
 
     .form-group {
@@ -36,69 +36,104 @@
         width: 100%;
     }
 </style>
+
 <body>
-    <div class="container mt-5 pt-5">
+    <div class="container  col-lg-6 col-md-10 col-sm-12">
         <div class="booking-form">
-            <h2>Booking Car</h2>
-            <form method="post" action="/Home/Bookingform">
-                <div class="form-group">
+            <h2 style="color:#2C7865">Booking Car</h2>
+            <form method="post" action="/User/Bookingform" id="booking">
+                @Html.AntiForgeryToken()
+                <div class="row g-3">
+                <div class="form-group col-md-6">
                     <label asp-for="PersonName">Booking Person's Name</label>
-                    <input asp-for="PersonName" type="text" class="form-control" id="bookingPerson" name="PersonName" placeholder="Enter booking person's name" required>
+                    <input asp-for="PersonName" type="text" class="form-control" placeholder="Enter booking person's name" required>
+                    <span asp-validation-for="PersonName" class="text-danger"></span>
                 </div>
-                <div class="form-group">
+                <div class="form-group col-md-6">
                     <label asp-for="CarName">Booking Car Name</label>
-                    <input asp-for="CarName" type="text" class="form-control" id="bookingPerson" name="Carname" placeholder="Enter booking Car Name" required>
+                    <input asp-for="CarName" type="text" class="form-control" value="@ViewBag.car" placeholder="Enter booking car name" required>
+                    <span asp-validation-for="CarName" class="text-danger"></span>
                 </div>
-                <div class="form-group">
+                <div class="form-group col-md-6">
                     <label asp-for="Cnic">CNIC Number</label>
-                    <input asp-for="Cnic" type="text" class="form-control" id="bookingPerson" name="cnicNumber" placeholder="Enter CNIC number" required>
+                    <input asp-for="Cnic" type="text" class="form-control" placeholder="Enter CNIC number" required>
+                    <span asp-validation-for="Cnic" class="text-danger"></span>
                 </div>
-                <div class="form-group">
+                <div class="form-group col-md-6">
                     <label asp-for="PhoneNumber">Phone Number</label>
-                    <input asp-for="PhoneNumber" type="tel" class="form-control" id="bookingPerson" name="phoneNumber" placeholder="Enter phone number" required>
+                    <input asp-for="PhoneNumber" type="tel" class="form-control" placeholder="Enter phone number" required>
+                    <span asp-validation-for="PhoneNumber" class="text-danger"></span>
                 </div>
-                <div class="form-group">
-                    <label asp-for="Email">Email</label>
-                    <input asp-for="Email" type="email" class="form-control" id="bookingPerson" name="email" placeholder="Enter email" required>
-                </div>
-                <div class="form-group">
+                <div class="form-group col-md-6">
                     <label asp-for="CarPlateNumber">Car Plate Number</label>
-                    <input asp-for="CarPlateNumber" type="text" class="form-control" id="bookingPerson" name="carPlate" placeholder="Enter car plate number" required>
+                    <input asp-for="CarPlateNumber" type="text" class="form-control" value="@ViewBag.plate" placeholder="Enter car plate number" required>
+                    <span asp-validation-for="CarPlateNumber" class="text-danger"></span>
                 </div>
-                <div class="form-group">
+                <div class="form-group col-md-6">
                     <label asp-for="CarColor">Car Color</label>
-                    <input asp-for="CarColor" type="text" class="form-control" id="bookingPerson" name="carColor" placeholder="Enter car color" required>
+                    <input asp-for="CarColor" type="text" class="form-control" value="@ViewBag.color" placeholder="Enter car color" required>
+                    <span asp-validation-for="CarColor" class="text-danger"></span>
                 </div>
-                <div class="form-group">
+                <div class="form-group col-md-6">
                     <label asp-for="PickupLocation">Pickup Location</label>
-                    <input asp-for="PickupLocation" type="text" class="form-control" id="bookingPerson" name="pickupLocation" placeholder="Enter pickup location" required>
+                    <input asp-for="PickupLocation" type="text" class="form-control" placeholder="Enter pickup location" required>
+                    <span asp-validation-for="PickupLocation" class="text-danger"></span>
                 </div>
-                <div class="form-group">
+                <div class="form-group col-md-6">
                     <label asp-for="PickUpDate">Pickup Date</label>
-                    <input asp-for="PickUpDate" type="date" class="form-control" id="bookingPerson" name="pickupDate" required>
+                    <input asp-for="PickUpDate" type="datetime-local" class="form-control" required>
+                    <span asp-validation-for="PickUpDate" class="text-danger"></span>
                 </div>
-                <div class="form-group">
+                <div class="form-group col-md-6">
                     <label asp-for="ReturnDate">Return Date</label>
-                    <input asp-for="ReturnDate" type="date" class="form-control" id="bookingPerson" name="returnDate" required>
+                    <input asp-for="ReturnDate" type="datetime-local" class="form-control" required>
+                    <span asp-validation-for="ReturnDate" class="text-danger"></span>
                 </div>
-                <div class="form-group">
-                    <label asp-for="CarType">Car Type</label>
-                    <select class="form-control" id="bookingPerson" name="carType" required>
-                        <option value="">Select car type</option>
-                        <option value="Economy">Economy</option>
-                        <option value="Compact">Compact</option>
-                        <option value="Midsize">Midsize</option>
-                        <option value="Full Size">Full Size</option>
-                        <option value="Luxury">Luxury</option>
+                <div class="form-group col-md-6">
+                    <label asp-for="Quantity">Quantity</label>
+                    <select asp-for="Quantity" class="form-control" required>
+                        <option value="">Select a Quantity</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
                     </select>
+                    <span asp-validation-for="Quantity" class="text-danger"></span>
                 </div>
-                <div class="form-group">
+                <div class="form-group col-md-6">
                     <label asp-for="SomeInformation">Additional Information</label>
-                    <textarea class="form-control" id="additionalInfo" rows="3" name="someInformation" placeholder="Enter any additional information"></textarea>
+                    <textarea asp-for="SomeInformation" class="form-control" rows="3" placeholder="Enter any additional information"></textarea>
+                    <span asp-validation-for="SomeInformation" class="text-danger"></span>
                 </div>
-                <button type="submit" class="btn btn-primary btn-book">Book Now</button>
+
+                <!-- Hidden fields to preserve ViewBag data -->
+                <input type="hidden" name="car" value="@ViewBag.car" />
+                <input type="hidden" name="color" value="@ViewBag.color" />
+                <input type="hidden" name="plate" value="@ViewBag.plate" />
+                </div>
+                <button type="submit" class="btn text-light btn-book" style="background-color:#2C7865" onclick="submitBookingForm(event)">Book Now</button>
             </form>
         </div>
     </div>
-    <script src="/_framework/aspnetcore-browser-refresh.js"></script>
+
+    @section Scripts {
+        <partial name="_ValidationScriptsPartial" />
+    }
+    <script>
+        function submitBookingForm() {
+            event.preventDefault()
+            var formData = $("#booking").serialize();
+
+            $.ajax({
+                url: '@Url.Action("Bookingform", "User")',
+                type: 'POST',
+                data: formData,
+                success: function (response) {
+                    alert('Booking updated successfully!');
+                },
+                error: function (xhr, status, error) {
+                    alert('An error occurred: ' + error);
+                }
+            });
+        }
+    </script>
 </body>

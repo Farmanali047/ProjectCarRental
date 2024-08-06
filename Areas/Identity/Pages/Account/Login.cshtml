@@ -57,19 +57,19 @@
                     <span asp-validation-for="Input.Password" class="text-danger"></span>
                 </div>
                  <div class="m-2 p-3">
-                      <button id="login-submit" type="submit" class="w-100 btn btn-primary">Log in</button>
+                                <button id="login-submit" type="submit" class="w-100 btn text-light" style="background-color:#2C7865">Log in</button>
                   </div>
 
                 <div>
-                                <div class="text-center">
+                                <div class="text-center " >
                     <p>
-                        <a id="forgot-password" asp-page="./ForgotPassword">Forgot password?</a>
+                                        <a id="forgot-password" asp-page="./ForgotPassword" class="" style="color:#2C7865">Forgot password?</a>
                     </p>
                     
                     
                     <p>
                         Don't Have an account?
-                        <a asp-page="./Register" asp-route-returnUrl="@Model.ReturnUrl">SignUp</a>
+                                        <a asp-page="./Register" asp-route-returnUrl="@Model.ReturnUrl" class="" style="color:#2C7865">SignUp</a>
                     </p>
                                 </div>
                 </div>

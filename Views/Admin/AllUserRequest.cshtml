@@ -1,0 +1,47 @@
+﻿@model List<Bookingform>
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+<html>
+<head>
+    <div class="container h1 display-5 text-center px-2 text-light  shadow mt-5 " style="background-color:#2C7865">
+        <div class="row">
+            <div class="col">
+                <h2 class="text-center  ms-4"> List of  User Booking Cars Request</h2>
+            </div>
+        </div>
+    </div>
+
+    <style>
+        table thead th {
+            border: 1px solid white;
+        }
+
+        table tbody td {
+            border: 1px solid black;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container my-5">
+        <div class="container mb-4 d-flex justify-content-center">
+            
+                <div class="input-group shadow">
+                    <input type="search" id="name" class="form-control" name="name" placeholder="Search..." aria-label="Search">
+                    <button class="btn" id="search" style="background-color:#2C7865">
+                        <i class="bi bi-search"></i>
+                    </button>
+                </div>
+         
+        </div>
+       </div>
+      <div id="list">
+          <partial name="_search" model="Model" />
+      </div>
+    <div class="d-flex justify-content-center">
+        @Html.ActionLink("Back to Home", "Admin", "Admin", null, new { @class = "btn mb-5 px-5 py-3 mt-2 bg-info rounded-3 text-light fa fa-arrow-left me-2" })
+    </div>
+</body>
+</html>

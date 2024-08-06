@@ -1,14 +1,14 @@
-﻿@model List<Bookingform>
+﻿@model List<AspNetUsers>
 @{
     Layout = null;
 }
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 <html>
 <head>
-    <div class="container h1 display-5 text-center px-2  shadow mt-5 bg-info">
+    <div class="container h1 display-5 text-center px-2  shadow mt-5 text-light" style="background-color:#2C7865">
         <div class="row">
             <div class="col">
-                <h2 class="text-center "> List of Booking Cars</h2>
+                <h2 class="text-center "> List of All Users</h2>
             </div>
         </div>
     </div>
@@ -32,60 +32,23 @@
             <thead class=" table-dark">
 
             <th>
-                PersonName
+                First Name
             </th>
             <th>
-                CarName
-            </th>
-            <th>
-                Cnic
-            </th>
-            <th>
-                PhoneNumber
+                Last Name
             </th>
             <th>
                 Email
             </th>
-            <th>
-                CarPlateNumber
-            </th>
-            <th>
-                CarColor
-            </th>
-            <th>
-                PickupLocation
-            </th>
-            <th>
-                PickUpDate
-            </th>
-            <th>
-                ReturnDate
-            </th>
-            <th>
-                CarType
-            </th>
-            <th>
-                SomeInformation
-            </th>
-
 
             </thead>
             <tbody class=" border border-dark">
                 @foreach (var booking in Model)
                 {
                     <tr>
-                        <td>@booking.PersonName</td>
-                        <td>@booking.CarName</td>
-                        <td>@booking.Cnic</td>
-                        <td>@booking.PhoneNumber</td>
+                        <td>@booking.First_Name</td>
+                        <td>@booking.Last_Name</td>
                         <td>@booking.Email</td>
-                        <td>@booking.CarPlateNumber</td>
-                        <td>@booking.CarColor</td>
-                        <td>@booking.PickupLocation</td>
-                        <td>@booking.PickUpDate</td>
-                        <td>@booking.ReturnDate</td>
-                        <td>@booking.CarType</td>
-                        <td>@booking.SomeInformation</td>
                     </tr>
                 }
             </tbody>
@@ -95,5 +58,5 @@
 </body>
 </html>
 <div class="d-flex justify-content-center">
-    @Html.ActionLink(" Back to Home", "Admin", "Admin", null, new { @class = "btn mb-5 px-5 py-3 mt-2 bg-info rounded-3 text-dark fa fa-arrow-left me-2" })
+    @Html.ActionLink(" Back to Home", "Admin", "Admin", null, new { @class = "btn mb-5 px-5 py-3 mt-2 rounded-3 text-white fa fa-arrow-left me-2", style = "background-color:#2C7865" })
 </div>

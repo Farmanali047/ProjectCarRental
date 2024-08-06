@@ -1,0 +1,16 @@
+﻿@using ProjectCarRental.Models
+@inject SignInManager<myAppUsers> SignInManager
+@{
+    var hasExternalLogins = (await SignInManager.GetExternalAuthenticationSchemesAsync()).Any();
+}
+<ul class="nav nav-pills flex-column">
+    <li class="nav-item text-light"><a class="nav-link text-light @ManageNavPages.IndexNavClass(ViewContext)" id="profile" asp-page="./Index" style="background-color:#2C7865">Profile</a></li>
+    <li class="nav-item text-light mt-2"><a class="nav-link text-light @ManageNavPages.EmailNavClass(ViewContext)" id="email" asp-page="./Email" style="background-color:#2C7865">Email</a></li>
+    <li class="nav-item text-light mt-2"><a class="nav-link text-light @ManageNavPages.ChangePasswordNavClass(ViewContext)" id="change-password" asp-page="./ChangePassword" style="background-color:#2C7865">Password</a></li>
+    @if (hasExternalLogins)
+    {
+        <li id="external-logins" class="nav-item mt-2 text-light"><a id="external-login" class="nav-link text-light @ManageNavPages.ExternalLoginsNavClass(ViewContext)" asp-page="./ExternalLogins" style="background-color:#2C7865">External logins</a></li>
+    }
+    <li class="nav-item mt-2 text-light"><a class="nav-link text-light @ManageNavPages.TwoFactorAuthenticationNavClass(ViewContext)" id="two-factor" asp-page="./TwoFactorAuthentication" style="background-color:#2C7865">Two-factor authentication</a></li>
+    <li class="nav-item  mt-2 text-light"><a class="nav-link text-light @ManageNavPages.PersonalDataNavClass(ViewContext)" id="personal-data" asp-page="./PersonalData" style="background-color:#2C7865">Personal data</a></li>
+</ul>

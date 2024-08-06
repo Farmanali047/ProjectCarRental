@@ -1,7 +1,213 @@
-﻿@{
+﻿
+
+
+
+@model List<CarRegisteration>
+@{
+    ViewData["Title"] = "Available Page";
+    Layout = null;
+}
+@* 
+<partial name="_CarRentState" /> *@
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f8f9fa;
+    }
+
+
+    .container {
+        margin-top: 50px;
+    }
+
+    .car-card {
+        background-color: #ffffff;
+        border-radius: 10px;
+        padding: 20px;
+        margin-bottom: 20px;
+    }
+
+    .car-image {
+        width: 100%;
+        border-radius: 10px;
+    }
+
+    .car-title {
+        margin-top: 10px;
+        font-weight: bold;
+    }
+
+    .car-info {
+        margin-top: 10px;
+    }
+
+    .btn-rent {
+        margin-top: 10px;
+    }
+</style>
+
+<div class="container">
+    <div class="row">
+        @foreach (var v in Model)
+        {
+            <div class="col-md-4 mt-4 pt-4">
+                <div class="car-card d-flex flex-column justify-content-between">
+                    <div>
+                        <img src="@v.ImgUrl" alt="Car 1" class="car-image">
+                        <h2 class="car-title"> @v.CarName</h2>
+                        <p class="car-info">Color: @v.CarColor</p>
+                        <p class="car-info">Year: @v.CarModel</p>
+                        <p class="car-info">Price: @v.Rental</p>
+                    </div>
+                   
+                </div>
+            </div>
+        }
+
+    </div>
+</div>
+@* <style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f8f9fa;
+    }
+
+    
+    .container {
+        margin-top: 50px;
+    }
+
+    .car-card {
+        background-color: #ffffff;
+        border-radius: 10px;
+        padding: 20px;
+        margin-bottom: 20px;
+    }
+
+    .car-image {
+        width: 100%;
+        border-radius: 10px;
+    }
+
+    .car-title {
+        margin-top: 10px;
+        font-weight: bold;
+    }
+
+    .car-info {
+        margin-top: 10px;
+    }
+
+    .btn-rent {
+        margin-top: 10px;
+    }
+</style>
+<div class="container">
+    <div class="row">
+        <div class="col-md-4 mt-4 pt-4">
+            <div class="car-card d-flex flex-column justify-content-between">
+                <div>
+                    <img src="~/images/t1.jpeg" alt="Car 1" class="car-image">
+                    <h2 class="car-title">Toyota Camry</h2>
+                    <p class="car-info">Color: Silver</p>
+                    <p class="car-info">Year: 2022</p>
+                    <p class="car-info">Price: $50/day</p>
+                </div>
+                <div class="text-center">
+                    <a href="@Url.Action("Bookingform", "Home")" class="btn btn-primary btn-rent">Rent Now</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4 mt-4 pt-4">
+            <div class="car-card d-flex flex-column justify-content-between">
+                <div>
+                    <img src="~/images/civic.jpeg" alt="Car 2" class="car-image">
+                    <h2 class="car-title">Honda Civic</h2>
+                    <p class="car-info">Color: White</p>
+                    <p class="car-info">Year: 2021</p>
+                    <p class="car-info">Price: $40/day</p>
+                </div>
+                <div class="text-center">
+                    <a href="@Url.Action("Bookingform", "Home")" class="btn btn-primary btn-rent">Rent Now</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4 mt-4 pt-4">
+            <div class="car-card d-flex flex-column justify-content-between">
+                <div>
+                    <img src="~/images/ford.jpeg" alt="Car 3" class="car-image">
+                    <h2 class="car-title">Ford Mustang</h2>
+                    <p class="car-info">Color: Blue</p>
+                    <p class="car-info">Year: 2020</p>
+                    <p class="car-info">Price: $60/day</p>
+                </div>
+                <div class="text-center">
+                    <a href="@Url.Action("Bookingform", "Home")" class="btn btn-primary btn-rent">Rent Now</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="car-card d-flex flex-column justify-content-between">
+                <div>
+                    <img src="~/images/bmw1.jpeg" alt="Car 4" class="car-image">
+                    <h2 class="car-title">BMW X5</h2>
+                    <p class="car-info">Color: Black</p>
+                    <p class="car-info">Year: 2020</p>
+                    <p class="car-info">Price: $70/day</p>
+                </div>
+                <div class="text-center">
+                    <a href="@Url.Action("Bookingform", "Home")" class="btn btn-primary btn-rent">Rent Now</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="car-card d-flex flex-column justify-content-between">
+                <div>
+                    <img src="~/images/audi.jpg" alt="Car 5" class="car-image">
+                    <h2 class="car-title">Audi A4</h2>
+                    <p class="car-info">Color: Gray</p>
+                    <p class="car-info">Year: 2021</p>
+                    <p class="car-info">Price: $65/day</p>
+                </div>
+                <div class="text-center">
+                    <a href="@Url.Action("Bookingform", "Home")" class="btn btn-primary btn-rent">Rent Now</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="car-card d-flex flex-column justify-content-between">
+                <div>
+                    <img src="~/images/jeep.jpeg" alt="Car 6" class="car-image">
+                    <h2 class="car-title">Jeep Wrangler</h2>
+                    <p class="car-info">Color: Green</p>
+                    <p class="car-info">Year: 2019</p>
+                    <p class="car-info">Price: $55/day</p>
+                </div>
+                <div class="text-center">
+                    <a href="@Url.Action("Bookingform", "Home")" class="btn btn-primary btn-rent">Rent Now</a>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+</div> *@
+
+@* @{
     Layout = "_layout1";
 }
-<style>
+<partial name="_CarRentState" />
+
+
+@* <style>
     body {
         font-family: Arial, sans-serif;
         background-color: #f8f9fa;
@@ -38,10 +244,10 @@
     }
 
 </style>
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"> *@
 
 
-<div class="container">
+@* <div class="container">
     <div class="row">
         <div class="col-md-4 mt-4 pt-4">
             <div class="car-card d-flex flex-column justify-content-between">
@@ -123,4 +329,4 @@
 
 
     </div>
-</div>
+</div> *@ 
